@@ -1,0 +1,27 @@
+{
+  "name"              : "Games HTML5",
+  "short_name"        : "gameshtml5",
+  "description"       : "A PWA html5 games template!",
+  "start_url"         : "https://www.yourgamesurl.com",
+  "display"           : "fullscreen",
+  "orientation"       : "portrait",
+  "background_color"  : "#000",
+  "theme_color"       : "#54ff79",
+  "icons": [
+    {
+      "src"           : "assets/icon.png",
+      "sizes"         : "48x48",
+      "type"          : "image/png"
+    },
+	{
+      "src"           : "assets/icon192.png",
+      "sizes"         : "192x192",
+      "type"          : "image/png"
+    },
+	{
+      "src"           : "assets/icon512.png",
+      "sizes"         : "512x512",
+      "type"          : "image/png"
+    }
+  ]
+}

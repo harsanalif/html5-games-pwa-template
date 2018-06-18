@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Goal Champion</title>
+	<meta charset="UTF-8" />
+    <meta name ="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+	<meta name="format-detection" content="telephone=no">
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="robots" content="noindex,nofollow" />
+	<meta name="apple-mobile-web-app-title" content="Goal Champion">
+	<link rel="apple-touch-icon" href="assets/icon.png">
+	<link rel="manifest" href="manifest.json">
+	<meta name="theme-color" content="#54ff79">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <style>
+        body {
+    		margin: 0px 0px 1px 0px;
+            padding: 0;
+            background-color: #000000;
+			background-image:url('assets/bg.png');
+        }
+    </style>
+
+	<!-- GAMES -->
+	<script src="js/phaser.js"></script>
+	<script src="js/preloader.js"></script>
+	<script src="js/games.js"></script>
+</head>
+<body>
+
+<noscript>This game needs Javascript to launch!</noscript>
+
+<div id="game"></div>
+
+<script type="text/javascript">
+function startGame()
+{
+	(function () {
+		var game = new Phaser.Game({
+					  renderer:    Phaser.CANVAS,
+					  scaleMode:   Phaser.ScaleManager.SHOW_ALL,
+					  alignH:      true,
+					  alignV:      true,
+					  trimH:       0,
+					  trimV:       0,
+					  width:       640,
+					  height:      960
+					  });
+
+		game.state.add('preloader', GoalChampion.Preloader, true);
+		game.state.add('games', GoalChampion.Games);
+	})();
+}
+
+
+//Service worker registration
+if ('serviceWorker' in navigator) {
+
+  //Register the service-worker to start caching resources.
+  window.addEventListener('load', function() {
+	navigator.serviceWorker.register('service-worker.js', {useCache: true}).then(function(reg) {
+      reg.onupdatefound = function() {
+        var installingWorker = reg.installing;
+
+        installingWorker.onstatechange = function() {
+          switch (installingWorker.state) {
+            case 'installed':
+              if (navigator.serviceWorker.controller) {
+			    //Found new service-worker!
+                console.log('New version available! Updating...');
+              } else {
+				//Finished caching!
+                console.log('Content is now available offline!');
+              }
+              break;
+            case 'redundant':
+              console.error('The installing service worker became redundant.');
+              break;
+          }
+        };
+      };
+    }).catch(function(e) {
+      console.error('Error during service worker registration:', e);
+    });
+	
+	//Start the html5 games.
+	startGame();
+  });
+}
+
+</script>
+</body>
