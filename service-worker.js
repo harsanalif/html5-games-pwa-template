@@ -1,4 +1,4 @@
-var cacheName = 'GamesV1.0.5'; //Unique cache ID. If you change your games, you need to change this ID so it can be updated in user device.
+var cacheName = 'GamesV1.0.0'; //Unique cache ID. If you change your games, you need to change this ID so it can be updated in user device.
 var appShellFiles = [
     'index.html',
     'manifest.json',

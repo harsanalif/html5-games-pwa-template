@@ -1,6 +1,6 @@
 {
-  "name"              : "Games HTML5",
-  "short_name"        : "gameshtml5",
+  "name"              : "HTML5 Games",
+  "short_name"        : "html5games",
   "description"       : "A PWA html5 games template!",
   "start_url"         : "https://www.yourgamesurl.com",
   "display"           : "fullscreen",
